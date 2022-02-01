@@ -1,0 +1,35 @@
+﻿@using MVCDataBase.Models.Siniflar
+
+@model List<Unvan>
+
+<div class="rov">
+    <div class="col-md-7">
+
+
+
+        <table class="table table=hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th> Ad</th>
+                    <th>Sil</th>
+                    <th> Güncelle</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.UnvanId</td>
+                    <td>@item.UnvanAd</td>
+                    <td><a class="btn btn-success" href="/Unvan/Sil/@item.UnvanId"> Sil</a></td>
+                    <td><a class="btn btn-info" href="/Unvan/Guncelle/@item.UnvanId ">Güncelle </a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
