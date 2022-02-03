@@ -1,0 +1,21 @@
+﻿@model  MVCDataBase.Models.ViewModel.UlkeModel
+
+<h2> @Model.Header </h2>
+<form method="post">
+    <div class="row">
+        <div class="col-md-7">
+
+
+
+            <lable> Id </lable>
+            <input class="form-control" type="text" value="@Model.Ulke.UlkeId   " name="UnvanId" />
+            <label>Ad</label>
+            <input class="form-control" type="text" value="@Model.Ulke.UlkeAd" name="UnvanAd" />
+            <input class="@Model.BtnClass " type="submit" value="@Model.BtnVal" />
+            <a class="btn btn warning" href="/Ulke/Liste" />
+
+        </div>
+
+    </div>
+</form>
+

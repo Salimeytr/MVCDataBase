@@ -12,38 +12,38 @@ using MVCDataBase.Models.ViewModel;
 
 namespace MVCDataBase.Controllers
 {
-    public class UnvanController : Controller
+    public class UlkeController : Controller
     {
         // GET: Unvan
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Baglanti"].ConnectionString);//SQL Bağlantı Kurmak için
         public ActionResult Liste()
         {
-            string qry = "select * from Unvan";
-            var ulist = con.Query<Unvan>(qry); // ulist içinde unvanların listesi var
+            string qry = "select * from Ulke";
+            var ulist = con.Query<Ulke>(qry); // ulist içinde unvanların listesi var
             return View(ulist);
         }
         [HttpGet]//Kayıt alma
-        public ActionResult Guncelle(int Id)
+        public ActionResult Guncelle(string Id)
         {
-            UnvanModel model = new UnvanModel();
+            UlkeModel model = new UlkeModel();
 
-            string qry = $"select * from unvan  where UnvanId = {Id}";
-            model.Unvan  = con.Query<Unvan>(qry).First();
+            string qry = $"select * from ulke  where UlkeId = '{Id}'";
+            model.Ulke = con.Query<Ulke>(qry).First();
             model.BtnClass = "btn btn - success";
             model.Header = "Güncelleme İşlemi";
             model.BtnVal = "Güncelle";
             return View("CRUD", model);
 
-            
+
 
         }
         //Güncelleme işlemi için Post işlemi
 
         [HttpPost]//Kayıt alma
-        public ActionResult Guncelle(Unvan model)
+        public ActionResult Guncelle(Ulke model)
         {
-            string qry = $"update unvan set unvanAd= @UnvanAd where UnvanId = {model.UnvanId}";
-            con.ExecuteScalar<int>(qry, model);
+            string qry = $"update ulke set ulkeAd= @UlkeAd where UlkeId = '{model.UlkeId}'";
+            con.ExecuteScalar<string>(qry, model);
             return RedirectToAction("Liste");
 
 
@@ -53,23 +53,23 @@ namespace MVCDataBase.Controllers
 
 
         [HttpGet]// Silme işlemi için Kayıt alma
-        public ActionResult Sil(int Id)
+        public ActionResult Sil(string Id)
         {
-            UnvanModel model= new UnvanModel();
-            string qry = $"select * from unvan where UnvanId={Id}";
-            model.Unvan=con.Query<Unvan>(qry).First();
+            UlkeModel model = new UlkeModel();
+            string qry = $"select * from ulke where UlkeId='{Id}'";
+            model.Ulke = con.Query<Ulke>(qry).First();
             model.BtnClass = "btn btn-danger";
             model.Header = "Silme İşlemi";
             model.BtnVal = "Sil";
-            return View ("CRUD",model);
+            return View("CRUD", model);
         }
         //Silme işlemi için Post işlemi
 
         [HttpPost]//Kayıt Silme Delete komutu ekleme kısmı
-        public ActionResult Sil(Unvan model)
+        public ActionResult Sil(Ulke model)
         {
-            string qry = $"delete from Unvan where UnvanId ={model.UnvanId}";
-            var unvan= con.ExecuteScalar<int>(qry, model);
+            string qry = $"delete from Ulke where UlkeId ='{model.UlkeId}'";
+            string ulke = con.ExecuteScalar<string>(qry, model);
             return RedirectToAction("Liste");
 
 
@@ -80,9 +80,9 @@ namespace MVCDataBase.Controllers
         [HttpGet]//Yeni kayıt ekleme
         public ActionResult Yeni()
         {
-            UnvanModel model = new UnvanModel();
-            
-            model.Unvan = new Unvan();
+            UlkeModel model = new UlkeModel();
+
+            model.Ulke = new Ulke();
             model.BtnClass = "btn btn-danger";
             model.Header = "Yeni Kayıt İşlemi";
             model.BtnVal = "Yeni Kayıt";
@@ -91,10 +91,10 @@ namespace MVCDataBase.Controllers
 
 
         [HttpPost]//Kayıt Silme Delete komutu ekleme kısmı
-        public ActionResult Yeni(Unvan model)
+        public ActionResult Yeni(Ulke model)
         {
-            string qry = $"insert into unvan (UnvanAd) values (@UnvanAd) " ;
-            con.ExecuteScalar<int>(qry, model);
+            string qry = $"insert into ulke (UlkeAd,UlkeId) values (@UlkeAd,@UlkeId)  ";
+            con.ExecuteScalar<string>(qry, model);
             return RedirectToAction("Liste");
 
 

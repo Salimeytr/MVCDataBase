@@ -1,6 +1,6 @@
-﻿@model  MVCDataBase.Models.Siniflar.Unvan  
+﻿@model  MVCDataBase.Models.ViewModel.UnvanModel  
 
-<h2> Güncelleme İşlemi</h2>
+<h2> @Model.Header </h2>
 <form method="post">
     <div class="row">
        <div class="col-md-7">
@@ -8,10 +8,11 @@
 
 
         <lable> Id </lable>
-        <input class="form-control" type="text" value="@Model.UnvanId" name="UnvanId" />
+        <input class="form-control" type="text" value="@Model.Unvan.UnvanId" name="UnvanId" />
         <label>Ad</label>
-        <input class="form-control" type="text" value="@Model.UnvanAd" name="UnvanAd" />
-        <input class="btn-btn-success " type="submit" value="Guncelle" />
+        <input class="form-control" type="text" value="@Model.Unvan.UnvanAd" name="UnvanAd" />
+        <input class="@Model.BtnClass " type="submit" value="@Model.BtnVal" />
+           <a class="btn btn warning" href="/Unvan/Liste"/>
 
        </div>
 

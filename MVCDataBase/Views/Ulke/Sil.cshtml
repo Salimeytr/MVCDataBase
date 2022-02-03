@@ -1,0 +1,19 @@
+﻿@model  MVCDataBase.Models.Siniflar.Ulke
+
+<h2> Silme İşlemi</h2>
+<form method="post">
+    <div class="row">
+        <div class="col-md-7">
+
+
+
+            <lable> Id </lable>
+            <input class="form-control" type="text" value="@Model.UlkeId" name="UnvanId" />
+            <label>Ad</label>
+            <input class="form-control" type="text" value="@Model.UlkeAd" name="UnvanAd" />
+            <input class="btn-btn-success " type="submit" value="Sil" />
+
+        </div>
+
+    </div>
+</form>

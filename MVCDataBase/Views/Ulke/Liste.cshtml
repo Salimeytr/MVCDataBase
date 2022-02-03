@@ -1,0 +1,37 @@
+﻿@using MVCDataBase.Models.Siniflar
+
+@model List<Ulke>
+
+<div class="rov " style="margin-top:15px">
+    <div class="col-md-7 ">
+        @*//değişkenleri okumak için*@
+
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th> Ad</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.UlkeId</td>
+                        <td>@item.UlkeAd</td>
+                        <td><a class="btn btn-success" href="/Ulke/Sil/@item.UlkeId"> Sil</a></td>
+                        <td><a class="btn btn-info" href="/Ulke/Guncelle/@item.UlkeId ">Güncelle </a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div style="float:right">
+            <a href="/Ulke/Yeni" class="btn btn-primary ">Yeni</a>
+        </div>
+    </div>
+
+</div>
+
