@@ -1,0 +1,55 @@
+﻿
+@using MVCDataBase.Models.ViewModel
+@model MVCDataBase.Models.ViewModel.PersonelModel 
+
+<h2>@Model.Header</h2>
+<form method="post">
+    <div class="row">
+        <div class="col-md-7">
+            <label>Ad</label>
+            <input class="form-control" type="text" name="Ad" value="@Model.Personel.Ad" />
+
+            <label>Soyad</label>
+            <input class="form-control" type="text" name="Soyad" value="@Model.Personel.Soyad" />
+
+            <label>Maaş</label>
+            <input class="form-control" type="text" name="Maas" value="@Model.Personel.Maas" />
+
+            <select name="UnvanId" class="form-control">
+                @foreach ( var item in Model.UnvanList)
+                {
+                    if (item.UnvanId == Model.Personel.UnvanId)
+                    {
+                        <option style="color:red" selected value="@item.UnvanId">@item.UnvanAd</option>
+                    }
+                    else
+                    {
+                        <option value="@item.UnvanId">@item.UnvanAd</option>
+                    }
+
+                }
+            </select>
+
+            <select name="UlkeId" class="form-control">
+                @foreach (var item in Model.UlkeList)
+                {
+                    <option value="@item.UlkeId">@item.UlkeAd</option>
+
+                }
+            </select>
+            <select name="YoneticiId" class="form-control">
+                @foreach (var item in Model.YoneticiList)
+                {
+                    <option value="@item.YoneticiId">@item.Adsoy</option>
+
+                }
+            </select>
+
+
+            @*<input class="form-control" type="text" value="@Model.Unvan.UnvanAd" name="UnvanAd" />*@
+            <input class="@Model.BtnClass" type="submit" value="@Model.BtnVal" />
+            <a class="btn btn-warning" href="/Unvan/Liste">İptal</a>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,45 @@
+﻿@using MVCDataBase.Models.ViewModel
+
+
+
+@model  PersonelModel
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="/Personel/Yeni" class="btn btn-primary" style="float:right; margin-bottom: 15px;">Yeni Kayıt</a>
+        @*<form>
+                <input class="btn btn-primary" type="submit" value="Yeni Kayıt" formaction="/Personel/Yeni" />
+            </form>*@
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ad Soyad</th>
+                    <th>Unvan</th>
+                    <th>İkamet</th>
+                    <th>Uyruk </th>
+                    <th>Yönetici </th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.TumPersonel)
+                {
+                    <tr>
+                        <td>@item.PersonelId</td>
+                        <td>@item.Calisan</td>
+                        <td>@item.UnvanAd</td>
+                        <td>@item.Ikamet</td>
+                        <td>@item.Uyruk</td>
+                        <td>@item.Yonetici</td>
+
+                        <td><a class="btn btn-danger" href="/Personel/Sil/@item.PersonelId">Sil</a></td>
+                        <td><a class="btn btn-primary" href="/Personel/Guncelle/@item.PersonelId">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

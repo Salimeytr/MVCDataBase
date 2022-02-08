@@ -125,13 +125,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\httpGetAttribute.cs" />
+    <Compile Include="Controllers\PersonelController.cs" />
     <Compile Include="Controllers\UlkeController.cs" />
     <Compile Include="Controllers\UnvanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTOs\PersonelListe.cs" />
+    <Compile Include="Models\DTOs\PersonelSelect.cs" />
+    <Compile Include="Models\Siniflar\Personel.cs" />
     <Compile Include="Models\Siniflar\Ulke.cs" />
     <Compile Include="Models\Siniflar\Unvan.cs" />
+    <Compile Include="Models\ViewModel\PersonelModel.cs" />
     <Compile Include="Models\ViewModel\UlkeModel.cs" />
     <Compile Include="Models\ViewModel\UnvanModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,6 +196,8 @@
     <Content Include="Views\Ulke\Yeni.cshtml" />
     <Content Include="Views\Ulke\Liste.cshtml" />
     <Content Include="Views\Ulke\CRUD.cshtml" />
+    <Content Include="Views\Personel\Liste.cshtml" />
+    <Content Include="Views\Personel\CRUD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
